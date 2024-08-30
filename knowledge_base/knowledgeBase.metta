@@ -1,0 +1,61 @@
+ ; Knowledge base of footballers
+
+(PlaysFor Messi MSL)
+(PlaysFor Neymar PSG)
+(PlaysFor Mbappe Madrid)
+(PlaysFor Ronaldo AlNassr)
+(PlaysFor Haaland ManCity)
+(PlaysFor DeBruyne ManCity)
+(PlaysFor Salah Liverpool)
+(PlaysFor VanDijk Liverpool)
+
+(Nationality Messi Argentina)
+(Nationality Neymar Brazil)
+(Nationality Mbappe France)
+(Nationality Ronaldo Portugal)
+(Nationality Haaland Norway)
+(Nationality DeBruyne Belgium)
+(Nationality Salah Egypt)
+(Nationality VanDijk Netherlands)
+
+(Position Messi Forward)
+(Position Neymar Forward)
+(Position Mbappe Forward)
+(Position Ronaldo Forward)
+(Position Haaland Forward)
+(Position DeBruyne Midfielder)
+(Position Salah Forward)
+(Position VanDijk Defender)
+
+(JerseyNumber Messi 30)
+(JerseyNumber Neymar 10)
+(JerseyNumber Mbappe 7)
+(JerseyNumber Ronaldo 7)
+(JerseyNumber Haaland 9)
+(JerseyNumber DeBruyne 17)
+(JerseyNumber Salah 11)
+(JerseyNumber VanDijk 4)
+(JerseyNumber Lewandowski 9)
+
+(Award Messi BallonDOr)
+(Award Ronaldo BallonDOr)
+(Award Lewandowski FIFATheBest)
+(Award VanDijk UEFAPlayerOfTheYear)
+(Award Mbappe WorldCupGoldenBoot)
+
+(= (playersByNationality $nation)
+    (match &self (Nationality $player $nation) $player))
+
+(= (playersByPosition $pos)
+    (match &self (Position $player $pos) $player))
+
+(= (playersByJersey $number)
+    (match &self (JerseyNumber $player $number) $player))
+
+(= (awardWiningPlayers $award)
+    (match &self (Award $player $award) $player))
+
+! (playersByNationality Brazil)
+! (playersByPosition Forward)
+! (playersByJersey 7)
+! (awardWiningPlayers BallonDOr)
