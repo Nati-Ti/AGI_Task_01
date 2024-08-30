@@ -4,12 +4,19 @@ from face_recognition_agent import FaceRecognitionAgent
 from together_ai_agent import TogetherAIProcessor
 from pineconeDB import PineconeManager
 from neoDB import Neo4jFetcher
+from dotenv import load_dotenv
+import os
 
+URL = os.getenv('NEO4j_URL')
+USER = os.getenv('NEO4j_USER')
+PASSWORD = os.getenv('NEO4j_PASSWORD')
+TOGETHERKEY = os.getenv('TOGETHERAIKEY')
+PINCONEKEY = os.getenv('PINECONEAPIKEY')
 
 face_recognition_agent = FaceRecognitionAgent()
-neo4j_fetcher = Neo4jFetcher(uri="neo4j+s://e057fbc6.databases.neo4j.io", user="neo4j", password="dwZLVLFI3ycBOXCFh0XorEWxcMY4USDqc4xJSEKzXnE")
-pinecone_manager = PineconeManager(api_key="your-pinecone-api-key", index_name="face-encodings")
-together_ai_processor = TogetherAIProcessor(api_key="c907bcd31dc7f8c840e501adc1d3203f048f0a70e9b9020fe145e39980b8ae15")
+neo4j_fetcher = Neo4jFetcher(uri=URL, user=USER, password=PASSWORD)
+pinecone_manager = PineconeManager(api_key=PINCONEKEY, index_name="face-encodings")
+together_ai_processor = TogetherAIProcessor(api_key=TOGETHERKEY)
 
 # Registering agents
 @register_atoms(pass_metta=True)

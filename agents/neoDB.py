@@ -1,4 +1,5 @@
 from neo4j import GraphDatabase
+from dotenv import load_dotenv
 import os
 
 # Initialize Neo4j driver
@@ -13,10 +14,9 @@ def load_data(uri, user, password, cypher_file_path):
         session.run(cypher_script)
         print("Data loaded into Neo4j.")
 
-# if __name__ == "__main__":
-URL = 'neo4j+s://e057fbc6.databases.neo4j.io'
-USER = 'neo4j'
-PASSWORD = 'dwZLVLFI3ycBOXCFh0XorEWxcMY4USDqc4xJSEKzXnE'
+URL = os.getenv('NEO4j_URL')
+USER = os.getenv('NEO4j_USER')
+PASSWORD = os.getenv('NEO4j_PASSWORD')
 CYPHER_FILE_PATH = './01_data.cypher'
 
 load_data(URL, USER, PASSWORD, CYPHER_FILE_PATH)
